@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>oefenen met buttons</title>
+</head>
+<body>
+    <button onclick="verlagen()">klik om te verlagen</button>  
+    <button onclick="verhogen()">klik om te verhogen</button>
+    <p id = "text"></p>
+        <script>
+            let x= null
+            function verhogen(){
+                x += 1
+                document.getElementById("text") .innerHTML =x;
+            } 
+             function verlagen(){
+                x -= 1
+                document.getElementById("text") .innerHTML =x;
+            } 
+        </script>
+</body>
+</html>

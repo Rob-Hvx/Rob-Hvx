@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <p id="text"></p>
+    <script>
+        let reactiegetrouwd = false;
+        let antwoordgetouwd = false;
+        let naam = prompt("Wat is je volledige naam", "voornaam achternaam");
+        let greeting = "Hallo " + naam + " :)";
+        let getrouwd = prompt("ben je getrouwd?", "ja of nee");
+        let leeftijd = parseInt(prompt("hoe oud ben je?","voer hier je leeftijd in"))
+        let gewicht = prompt("hoe zwaar ben je?", "69KG");
+        if (getrouwd == "ja") {
+            antwoordgetouwd = true
+        }
+        if (getrouwd == "nee") {
+            antwoordgetouwd = false
+        }
+        if (antwoordgetouwd == true) {
+            reactiegetrouwd= "je bent wel getrouwd"
+        }
+        if (antwoordgetouwd == false) {
+            reactiegetrouwd = "je bent niet getrouwd"
+        }
+        
+        document.getElementById("text").innerHTML = greeting + "<br>" + reactiegetrouwd + "<br>Je bent " + leeftijd +" jaar oud <br> je weegt " + gewicht;
+    </script>
+</body>
+</html>
