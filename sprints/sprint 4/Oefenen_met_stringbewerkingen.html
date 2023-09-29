@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="text"></p>
+    <script>
+        let naam = prompt("Wat is je volledige naam", "voornaam achternaam");
+        let greeting = "Hallo " + naam + " :)";
+        let naamLengte = naam.length;
+        let names = naam.split(" ");
+            let voornaam = names[0];
+            let achternaam = names[1];
+       document.getElementById("text").innerHTML = greeting + ". <br>Jouw naam is " + naamLengte + " tekens lang.<br>Je voornaam is " + voornaam + " en je achternaam is " + achternaam;
+
+    </script>
+    </body>
+</html>

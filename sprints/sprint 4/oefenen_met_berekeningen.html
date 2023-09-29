@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>oefenen met berekeningen</title>
+</head>
+<body>
+    <p id="text1"></p>
+    <p id="text2"></p>
+    <p id="text3"></p>
+    <p id="text4"></p>
+    <script>
+        let getal1 = parseInt( prompt("getal 1 + getal 2 = ???","voer hier getal 1 in"));    
+        let getal2 = parseInt(prompt("getal 1 + getal 2 = ???","voer hier getal 2 in"));
+        let optellen = getal1 + getal2;
+        let aftrekken = getal1 - getal2;
+        let vermenigvuldigen= getal1 * getal2;
+        let delen = getal1 / getal2;
+        document.getElementById("text1").innerHTML = getal1 + "+" + getal2 + "=" + optellen;
+        document.getElementById("text2").innerHTML = getal1 + "-" + getal2 + "=" + aftrekken;
+        document.getElementById("text3").innerHTML = getal1 + "*" + getal2 + "=" + vermenigvuldigen;
+        document.getElementById("text4").innerHTML = getal1 + "/" + getal2 + "=" + delen;
+    </script>
+</body>
+</html>

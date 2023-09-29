@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<head>
+    <title>Calculator_V1</title>
+    <style>
+        .achtergrond {
+            height: 850px;;
+            width:600px;
+            background-color:gray;
+            box-shadow: 2px 2px;
+            border-radius: 30px;
+            margin: auto;
+        }
+        .scherm {
+            margin: 25px 40px;
+            width: 520px;
+            height: 120px;
+            border-radius: 10px;
+            border-color: black;
+        }
+        .knoppencontainer {
+            width: 533px;
+            margin:auto;
+        }
+        .knop {
+            width: 130px;
+            height: 130px;
+            background-color: aliceblue;
+            box-shadow: 1px 1px;
+            font-weight: 900;
+            font-size: large;
+            margin: auto;
+            border-radius: 10px;
+        }
+        .operatorknop {
+            width: 130px;
+            height: 130px;
+            background-color:orange;
+            box-shadow: 1px 1px;
+            font-weight: 900;
+            font-size: large;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="achtergrond">
+        <input class="scherm", id="scherm"/>
+        <div class=knoppencontainer>
+            <button class="knop" onclick="KarakterToevoegen('(')">(</button>
+            <button class="knop" onclick="KarakterToevoegen(')')">)</button>
+            <button class="knop" onclick="DeleteLaatsteKarakter()">DEL</button>
+            <button class="knop" onclick="DeleteAlles()">c</button>
+            <br>
+            <button class="knop" onclick="KarakterToevoegen('0')">0</button>
+            <button class="knop" onclick="KarakterToevoegen('1')">1</button>
+            <button class="knop" onclick="KarakterToevoegen('2')">2</button>
+            <button class="operatorknop" onclick="KarakterToevoegen('+')">+</button>
+            <br>
+            <button class="knop" onclick="KarakterToevoegen('3')">3</button>
+            <button class="knop" onclick="KarakterToevoegen('4')">4</button>
+            <button class="knop" onclick="KarakterToevoegen('5')">5</button>
+            <button class="operatorknop" onclick="KarakterToevoegen('-')">-</button>
+            <br>
+            <button class="knop" onclick="KarakterToevoegen('6')">6</button>
+            <button class="knop" onclick="KarakterToevoegen('7')">7</button>
+            <button class="knop" onclick="KarakterToevoegen('8')">8</button>
+            <button class="operatorknop" onclick="KarakterToevoegen('*')">*</button>
+            <br>
+            <button class="knop" onclick="KarakterToevoegen('.')">.</button>
+            <button class="knop" onclick="KarakterToevoegen('9')">9</button>
+            <button class="knop" onclick="Bereken()">=</button>
+            <button class="operatorknop" onclick="KarakterToevoegen('/')">/</button>
+        </div>
+    </div>
+        <script>
+            let gelijkheidhaakjes= null
+           function  KarakterToevoegen(karakter){
+                let scherm = document.getElementById("scherm");
+                scherm.value += karakter;
+                if(karakter === "("){
+                    gelijkheidhaakjes += 1
+                }
+                if(karakter === ")"){
+                    gelijkheidhaakjes -= 1
+                }
+           }
+           function DeleteLaatsteKarakter() {
+                let scherm = document.getElementById("scherm");
+                gelijkheidhaakjes = 0
+                scherm.value = scherm.value.slice(0,-1);
+           }
+            function DeleteAlles() {
+                scherm.value = 0
+                scherm.value = scherm.value.slice(0,-1);
+           }
+            function Bereken() {
+                let scherm = document.getElementById("scherm");
+                if (scherm.value.length === 0) {
+                    return;
+                }
+                let regex = /[0-9-+*()/.]/g;
+                if (scherm.value.replace(regex, "").length > 0 || gelijkheidhaakjes !== 0) {
+				scherm.value = "SYNTAX ERROR";
+            } else {
+				scherm.value = eval(scherm.value);
+			}
+			gelijkheidhaakjes = 0;
+           }
+        </script>
+        
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+    <title>oefenen met functies</title>
+</head>
+<body>
+    <button onclick="calculatePrice()">klik om te berekenen</button>
+    <p id = "text"></p>
+    <script>
+        let totale_prijs = null 
+        let productprijs = parseInt(prompt("hoeveel euro is het product?","zet hier de prijs van het product"))
+        let aantal = prompt("hoeveel wil je er kopen?","voer hier het aantal in")
+        function calculatePrice (){
+           totale_prijs = productprijs * aantal
+           document.getElementById("text") .innerHTML = "de totale prijs is " + totale_prijs + ".";
+        } 
+    </script>
+</body>
+</html>
