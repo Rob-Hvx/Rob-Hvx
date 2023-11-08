@@ -30,19 +30,19 @@ function draw() {
   
   // Pas onderstaande regel aan: gebruik de functie dist om de onderlinge afstand te bepalen
   
-  onderlingeAfstand = 1;
+  onderlingeAfstand = dist(xPositie,yPositie,550,height - straal) -2 * straal;
   if (onderlingeAfstand <= 0) {
     eindScherm();
     noLoop();
   }
   
-  // door de slashes weg te halen kun je besturing van de bal inschakelen.
-  // Om het wat moeilijker te maken veranderen er bij gebruik van een pijltoets 2 dingen tegelijkertijd.
-  
-  // gebruikBesturing();
+  gebruikBesturing();
 
   if (yPositie<straal || yPositie>height-straal) {
     ySnelheid *= -1;
+  } 
+  if (xPositie<straal || xPositie>width-straal) {
+    xSnelheid *= -1;
   } 
 }
 
