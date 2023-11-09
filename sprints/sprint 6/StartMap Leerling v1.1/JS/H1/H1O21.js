@@ -37,4 +37,3 @@ function draw() {
   x += snelheid;
   ellipse(x,170,diameter);
 }
-
