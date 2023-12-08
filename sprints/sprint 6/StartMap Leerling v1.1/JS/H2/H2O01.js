@@ -1,4 +1,7 @@
-var kater,katerKlein,landschap,kever;
+var kater;
+var katerKlein;
+var landschap;
+var kever;
 var keverX;
 var keverY;
 
@@ -6,6 +9,7 @@ function preload() {
   kater = loadImage("images/brieck.jpg");
   bomen = loadImage("images/bomen.jpg");
   kever = loadImage("images/sprites/kever.png");
+  katerKlein = loadImage("images/brieck_klein.jpg");
 }
 
 function setup() {
@@ -16,9 +20,9 @@ function setup() {
 }
 
 function draw() {
-  background(bomen);  
-  // image(katerKlein,0,0);
+  background(bomen); 
+  image(katerKlein,0,0);
   keverX+=random(-5,5);
   keverY+=random(-5,5);
-  // image(kever,keverX,keverY);
+  image(kever,keverX,keverY);
 }
