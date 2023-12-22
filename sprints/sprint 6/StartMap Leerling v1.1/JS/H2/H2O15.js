@@ -37,6 +37,7 @@ function draw() {
   image(spriteSheet,x,y,br,ho,(frameCount % aantalSpriteKolommen)*sBr,rij*sHo,sBr,sHo);
 
   kolom = frameCount % aantalSpriteKolommen;
+  rij = floor(frameCount/aantalSpriteKolommen) % aantalSpriteRijen;
 
   fill('black');
   text("frameCount=" + frameCount,5,20);
