@@ -23,7 +23,8 @@ var jager = {
   },
   
   vlakbijRand() {
-    if (this.x < 4*this.stapGrootte || this.x > canvas.width - 4*this.stapGrootte - this.zijde) {
+    if (this.x < 4*this.stapGrootte || this.x > canvas.width - 4*this.stapGrootte - this.zijde||this.y < 4*this.stapGrootte||this.y > canvas.height - 4*this.stapGrootte - this.zijde) {
+      prooi.benGeraakt = true;
       return true;
     }
     else {
@@ -46,7 +47,7 @@ var prooi = {
   benGeraakt: false,
   
   wordJeGeraakt(vijand) {
-    if (vijand.x >= this.x - vijand.zijde && vijand.x <= this.x + this.breedte) {
+    if (vijand.x >= this.x - vijand.zijde && vijand.x <= this.x + this.breedte && vijand.y >= this.y -vijand.zijde && vijand.y <= this.y + this.hoogte) {
       this.benGeraakt=true;
     }
   },  
