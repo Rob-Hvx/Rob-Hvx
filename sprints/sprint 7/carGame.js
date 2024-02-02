@@ -4,9 +4,12 @@ let obstacles = [];
 let gameState = "start";
 let countdown = 180;
 let roadLines = [];
+let scale = 1.5;
+let originalSpeed = 1.5;
+let speed = originalSpeed;
 
 function setup() {
-  createCanvas(400, 600);
+  createCanvas(400*scale, 600*scale);
   player = new Player();
   track = new Track();
 }
@@ -54,7 +57,7 @@ function draw() {
     countdown -= 1 / frameRate();
     
     if (countdown <= 0) {
-      gameState = "gameover";
+      gameState = "win";
     }
   } else if (gameState === "gameover") {
     showGameOver();
@@ -69,10 +72,15 @@ function keyPressed() {
   } else if ((gameState === "gameover" || gameState === "win") && keyCode === ENTER) {
     startGame();
   } else if (gameState === "playing") {
-    if (keyCode === LEFT_ARROW) {
+    if (keyIsDown(37)) {
       player.setDirection(-1);
-    } else if (keyCode === RIGHT_ARROW) {
+    } else if (keyIsDown(39)) {
       player.setDirection(1);
+    }
+    if (keyIsDown(38)) {
+      speed = originalSpeed*2;
+    } else {
+      speed = originalSpeed;
     }
   }
 }
@@ -100,7 +108,7 @@ function startGame() {
 
 function showStartMenu() {
   fill(0);
-  textSize(24);
+  textSize(24*scale);
   textAlign(CENTER, CENTER);
   text("Press ENTER to start", width / 2, height / 2);
 }
@@ -121,11 +129,11 @@ function showWinScreen() {
 
 class Player {
   constructor() {
-    this.width = 30;
-    this.height = 50;
-    this.x = 185;
-    this.y = 550;
-    this.speed = 5;
+    this.width = 30*scale;
+    this.height = 50*scale;
+    this.x = 185*scale;
+    this.y = 550*scale;
+    this.speed = 5*speed;
     this.direction = 0;
   }
 
@@ -144,8 +152,8 @@ class Player {
       rect(this.x, this.y, this.width, this.height);
   
       fill(255, 255, 0);
-      rect(this.x + 5, this.y, 5, 5);
-      rect(this.x + 20, this.y, 5, 5);
+      rect(this.x + 5*scale, this.y, 5*scale, 5*scale);
+      rect(this.x + 20*scale, this.y, 5*scale, 5*scale);
   
       fill("darkred");
       stroke(0);
@@ -173,11 +181,11 @@ class Player {
 
 class Obstacle {
     constructor() {
-      this.width = 30;
-      this.height = 50;
-      this.x = random(width - this.width);
-      this.y = random(height / 2);
-      this.speed = 2;
+      this.width = 30*scale;
+      this.height = 50*scale;
+      this.x = random(width - this.width)*scale;
+      this.y = random(height / 2)*scale;
+      this.speed = 2*speed;
       this.color = color(random(255), random(255), random(255));
     }
   
@@ -196,8 +204,8 @@ class Obstacle {
       rect(this.x, this.y, this.width, this.height);
   
       fill(255, 255, 0);
-      rect(this.x + 5, this.y + 45, 5, 5);
-      rect(this.x + 20, this.y + 45, 5, 5);
+      rect(this.x + 5*scale, this.y + 45*scale, 5*scale, 5*scale);
+      rect(this.x + 20*scale, this.y + 45*scale, 5*scale, 5*scale);
   
       let darkerColor = color(
         red(this.color) * 0.8,
