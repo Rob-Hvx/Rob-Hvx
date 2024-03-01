@@ -6,7 +6,8 @@ let countdown = 180;
 let roadLines = [];
 let scale = 1.5;
 let originalSpeed = 1.5;
-let speed = originalSpeed;
+let level = 1;
+let speed = originalSpeed * level;
 
 function setup() {
   createCanvas(400*scale, 600*scale);
@@ -53,11 +54,13 @@ function draw() {
     textAlign(RIGHT, TOP);
     fill(0);
     text("Tijd: " + Math.ceil(countdown), width - 10, 10);
+    text("Level: " + level, width - 10, 30);
 
     countdown -= 1 / frameRate();
     
     if (countdown <= 0) {
       gameState = "win";
+      level++;
     }
   } else if (gameState === "gameover") {
     showGameOver();
@@ -76,11 +79,6 @@ function keyPressed() {
       player.setDirection(-1);
     } else if (keyIsDown(39)) {
       player.setDirection(1);
-    }
-    if (keyIsDown(38)) {
-      speed = originalSpeed*2;
-    } else {
-      speed = originalSpeed;
     }
   }
 }
