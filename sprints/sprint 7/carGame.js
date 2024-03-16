@@ -5,9 +5,8 @@ let gameState = "start";
 let countdown = 180;
 let roadLines = [];
 let scale = 1.5;
-let originalSpeed = 1.5;
 let level = 1;
-let speed = originalSpeed * level;
+let speed = 1.5;
 
 function setup() {
   createCanvas(400*scale, 600*scale);
@@ -55,6 +54,7 @@ function draw() {
     fill(0);
     text("Tijd: " + Math.ceil(countdown), width - 10, 10);
     text("Level: " + level, width - 10, 30);
+    text("Speed: " + round(2*speed*Math.sqrt(level)), width - 10, 50);
 
     countdown -= 1 / frameRate();
     
@@ -183,7 +183,7 @@ class Obstacle {
       this.height = 50*scale;
       this.x = random(width - this.width)*scale;
       this.y = random(height / 2)*scale;
-      this.speed = 2*speed;
+      this.speed = 2*speed*Math.sqrt(level);
       this.color = color(random(255), random(255), random(255));
     }
   
@@ -219,7 +219,7 @@ class Obstacle {
   class RoadLine {
     constructor(y) {
       this.y = y;
-      this.speed = 2;
+      this.speed = 2*Math.sqrt(level);
     }
   
     update() {
