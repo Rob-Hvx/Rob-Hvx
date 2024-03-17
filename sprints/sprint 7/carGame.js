@@ -1,6 +1,6 @@
 let player;
 let track;
-let obstacles = [];
+let obstacle;
 let gameState = "start";
 let countdown = 180;
 let roadLines = [];
@@ -12,6 +12,7 @@ function setup() {
   createCanvas(400*scale, 600*scale);
   player = new Player();
   track = new Track();
+  obstacle = new Obstacle();
 }
 
 function draw() {
